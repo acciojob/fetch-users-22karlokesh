@@ -12,10 +12,11 @@
 
 // export default App
 
-
 import React, { useState } from "react";
 import axios from "axios";
 import './../styles/App.css';
+
+const API_KEY = "YOUR_API_KEY"; // Replace with your actual API key from reqres.in
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -25,7 +26,11 @@ const App = () => {
   const fetchUsers = () => {
     setLoading(true);
     setFetched(false);
-    axios.get("https://reqres.in/api/users")
+    axios.get("https://reqres.in/api/users", {
+      headers: {
+        "API-Key": API_KEY,
+      }
+    })
       .then(res => {
         setUsers(res.data.data || []);
         setLoading(false);
@@ -79,4 +84,4 @@ const App = () => {
 };
 
 export default App;
-
+      
