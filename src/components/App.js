@@ -16,7 +16,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import './../styles/App.css';
 
-const API_KEY = "YOUR_API_KEY"; // Replace with your actual API key from reqres.in
+const API_KEY = "YOUR_API_KEY"; // Replace if needed
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -73,7 +73,9 @@ const App = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="4" style={{ textAlign: "center" }}>No data found</td>
+                <td colSpan="4" style={{ textAlign: "center" }}>
+                  No data found to display.
+                </td>
               </tr>
             )}
           </tbody>
@@ -84,4 +86,3 @@ const App = () => {
 };
 
 export default App;
-      
