@@ -44,11 +44,7 @@ const App = () => {
 
       {loading && <p>Loading...</p>}
 
-      {!loading && fetched && users.length === 0 && (
-        <p>No users found.</p>
-      )}
-
-      {!loading && users.length > 0 && (
+      {!loading && fetched && (
         <table border="1" cellPadding="10">
           <thead>
             <tr>
@@ -59,16 +55,22 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map(user => (
-              <tr key={user.id}>
-                <td>{user.first_name}</td>
-                <td>{user.last_name}</td>
-                <td>{user.email}</td>
-                <td>
-                  <img src={user.avatar} alt={`${user.first_name} avatar`} width="50" />
-                </td>
+            {users.length > 0 ? (
+              users.map(user => (
+                <tr key={user.id}>
+                  <td>{user.first_name}</td>
+                  <td>{user.last_name}</td>
+                  <td>{user.email}</td>
+                  <td>
+                    <img src={user.avatar} alt={`${user.first_name} avatar`} width="50" />
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" style={{ textAlign: "center" }}>No data found</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       )}
@@ -77,3 +79,4 @@ const App = () => {
 };
 
 export default App;
+
